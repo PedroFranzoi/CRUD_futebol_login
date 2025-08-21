@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="name">Nome:</label>
         <input type="text" name="name" required>
         <label for="cidade">Cidade:</label>
-        <input type="text" name="cidade">
+        <input type="text" name="cidade" required>
 
 
 
