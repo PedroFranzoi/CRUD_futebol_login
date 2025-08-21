@@ -1,6 +1,6 @@
 <?php
 
-include 'futebol_db';
+include 'db.php';
 include 'partidas';
 
 $id = $_GET['id'];

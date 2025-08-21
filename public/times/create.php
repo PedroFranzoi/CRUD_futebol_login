@@ -1,6 +1,6 @@
 <?php
 
-include 'futebol_db';
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
