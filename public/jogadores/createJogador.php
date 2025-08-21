@@ -1,15 +1,17 @@
 <?php
 
-include 'db.php';
+include '../../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = $_POST['nome'];
     $posicao = $_POST['posicao'];
     $numero = $_POST['numero_camisa'];
-    
+    $time = $_POST['']; // não sei fazer, perguntar amanhã
 
     $sql = " INSERT INTO jogadores (nome,posicao,numero) VALUE ('$name','$posicao','$numero')";
+
+    if()
 
     if ($conn->query($sql) === true) {
         echo "Novo jogador registrado criado com sucesso.";
