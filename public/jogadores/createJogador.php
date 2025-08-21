@@ -11,14 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql = " INSERT INTO jogadores (nome,posicao,numero) VALUE ('$name','$posicao','$numero')";
 
-    if()
-
-    if ($conn->query($sql) === true) {
-        echo "Novo jogador registrado criado com sucesso.";
-    } else {
-        echo "Erro " . $sql . '<br>' . $conn->error;
+    if($numero > 99 || $numero <= 0){
+        echo "Coloque o numero da camisa do jogador de maneira correta(entre 1 e 99).";
+    }else{
+        if ($conn->query($sql) === true) {
+            echo "Novo jogador registrado criado com sucesso.";
+        } else {
+            echo "Erro " . $sql . '<br>' . $conn->error;
+        }
+        $conn->close();
     }
-    $conn->close();
+
+    
 }
 
 ?>
@@ -47,7 +51,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="name" required>
 
         <label for="posicao">Posição:</label>
-        <input type="text" name="posicao" required>
+        <select name="posicao" name="posicao">
+            <option value="GOL">GOL</option>
+            <option value="ZAG">ZAG</option>
+            <option value="LE">LE</option>
+            <option value="LD">LD</option>
+            <option value="ALA-E">ALA-E</option>
+            <option value="ALA-D">ALA-D</option>
+            <option value="VOL">VOL</option>
+            <option value="MC">MC</option>
+            <option value="MEI">MEI</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="SA">SA</option>
+            <option value="PD">PD</option>
+            <option value="PE">PE</option>
+            <option value="CA">CA</option>
+        </select>
 
         <label for="numero">Numero da Camisa:</label>
         <input type="number" name="numero">
