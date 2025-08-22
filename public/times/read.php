@@ -2,6 +2,8 @@
 
 include '../../config/db.php';
 
+
+
 $sql = "SELECT * FROM times";
 
 $result = $conn->query($sql);
@@ -13,6 +15,9 @@ if ($result->num_rows > 0) {
             <th> ID </th>
             <th> Nome </th>
             <th> Cidade </th>
+            <a href='../times/create.php' >Criar times<a>
+            <a href='../times/update.php' >Editar times<a>
+            <a href='../times/delete.php' >Deletar times<a>
         </tr>
          ";
 
@@ -20,10 +25,10 @@ if ($result->num_rows > 0) {
 
         echo "<tr>
                 <td> {$row['id']} </td>
-                <td> {$row['name']} </td>
+                <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
-              </tr>   
-        ";
+                </tr>"
+                ;
     }
     echo "</table>";
 } else {
