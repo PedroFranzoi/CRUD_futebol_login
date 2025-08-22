@@ -2,6 +2,9 @@
 
 include '../../config/db.php';
 
+$sqlTimes = "SELECT id, nome FROM times";
+$resultTimes = $conn->query($sqlTimes);
+
 $id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -9,8 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['nome'];
     $posicao = $_POST['posicao'];
     $numero = $_POST['numero_camisa'];
+    $timeId = $_POST['time'];
 
-    $sql = "UPDATE jogadores SET nome ='$name', posicao= '$posicao', numero_camisa ='$numero' WHERE id=$id";
+    $sql = "UPDATE jogadores SET nome ='$name', time='$timeId', posicao= '$posicao', numero_camisa ='$numero' WHERE id=$id";
 
 
     if($numero > 99 || $numero <= 0){
@@ -51,6 +55,13 @@ $row = $result -> fetch_assoc();
 
         <label for="nome">Nome:</label>
         <input type="text" name="nome" value="<?php echo $row['nome'];?>" required>
+
+        <label for="time">Time:</label>
+        <select name="time">
+            <?php while ($dado = $resultTimes->fetch_assoc()): ?>
+                <option value="<?= $dado['id'] ?>" <?php if($row['time_id'] == $dado['id']){echo 'selected';} ?>><?= $dado['nome'] ?></option>
+            <?php endwhile; ?>
+        </select><br>
 
         <label for="posicao">Posição:</label>
         <select name="posicao" name="posicao">
