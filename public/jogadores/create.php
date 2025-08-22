@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     <div class="centro">
-    <h1>Adicionar o Produto</h1>
+    <h1>Adicionar o Jogador</h1>
      <form method="POST" action="create.php">
     <div class="flex">
         <label for="name">Nome:</label>
