@@ -37,7 +37,7 @@ if (isset($_GET['ganhou']) && $_GET['ganhou'] != '') {
 }
 
 $pagina = 0;
-$registroPorPagina = 2;
+$registroPorPagina = 10;
 $resultado = mysqli_query($conn, $sql);
 $num_linhas = mysqli_num_rows($resultado);
 $total_paginas = $num_linhas / $registroPorPagina;
