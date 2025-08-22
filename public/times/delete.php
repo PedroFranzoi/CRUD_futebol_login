@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
             $stmt->execute();
             $stmt->close();
         } catch (Exception $e) {
-            echo 'Não foi possível deletar o time, pois ainda há jogadores dentro dele.';
+            echo 'Não foi possível deletar o time, pois ainda há jogadores dentro dele. Para solucionar o erro, delete os jogadores presente no time na aba de delete dos jogadores.';
         }
     }
 } else {
