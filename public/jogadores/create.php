@@ -2,14 +2,17 @@
 
 include '../../config/db.php';
 
+$sqlTimes = "SELECT id, nome FROM times";
+$resultTimes = $conn->query($sqlTimes);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = $_POST['nome'];
     $posicao = $_POST['posicao'];
     $numero = $_POST['numero_camisa'];
-    $time = $_POST['']; // não sei fazer, perguntar amanhã
+    $time = $_POST['time'];
 
-    $sql = " INSERT INTO jogadores (nome,posicao,numero) VALUE ('$name','$posicao','$numero')";
+    $sql = " INSERT INTO jogadores (nome,posicao,numero_camisa, time_id) VALUE ('$name','$posicao','$numero', $time)";
 
     if($numero > 99 || $numero <= 0){
         echo "Coloque o numero da camisa do jogador de maneira correta(entre 1 e 99).";
@@ -44,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     <div class="centro">
-    <h1>Adicionar o Produto</h1>
+    <h1>Adicionar o Jogador</h1>
      <form method="POST" action="create.php">
     <div class="flex">
-        <label for="name">Nome:</label>
-        <input type="text" name="name" required>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
 
         <label for="posicao">Posição:</label>
         <select name="posicao" name="posicao">
@@ -69,12 +72,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="CA">CA</option>
         </select>
 
-        <label for="numero">Numero da Camisa:</label>
-        <input type="number" name="numero">
+        <label for="numero_camisa">Numero da Camisa:</label>
+        <input type="number" name="numero_camisa">
+        <label for="time">Time:</label>
+        <select name="time">
+        <?php while ($row = $resultTimes->fetch_assoc()): ?>
+            <option value="<?= $row['id'] ?>"><?= $row['nome'] ?></option>
+        <?php endwhile; ?>
+        </select>
     </div>
         <input id="botaoAdd" type="submit" value="Adicionar">
         <div>
-            <a href="readJogador.php">Ver Registros</a>
+            <a href="read.php">Ver Registros</a>
         </div>
         
 </div>

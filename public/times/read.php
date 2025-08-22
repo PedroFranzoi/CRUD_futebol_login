@@ -1,6 +1,8 @@
 <?php
 
-include 'db.php';
+include '../../config/db.php';
+
+
 
 $sql = "SELECT * FROM times";
 
@@ -13,6 +15,9 @@ if ($result->num_rows > 0) {
             <th> ID </th>
             <th> Nome </th>
             <th> Cidade </th>
+            <th> Editar Times </th>
+            <th> Deletar Times </th>
+            <a href='../times/create.php' >Criar times<a>
         </tr>
          ";
 
@@ -20,14 +25,21 @@ if ($result->num_rows > 0) {
 
         echo "<tr>
                 <td> {$row['id']} </td>
-                <td> {$row['name']} </td>
+                <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
-              </tr>   
-        ";
+                 <td>
+                    <a href='../times/update.php' >Editar time<a>
+                </td>
+                <td>
+                    <a href='../times/delete.php' >Deletar time<a
+                </td>
+                </tr>"
+                ;
     }
     echo "</table>";
 } else {
-    echo "Nenhum registro de time encontrado.";
+    echo "Nenhum Registro de Time Encontrado.";
+    echo "<a href='create.php'>Criar Registro de Time</a>";
 }
 
 $conn -> close();

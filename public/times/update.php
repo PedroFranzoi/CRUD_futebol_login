@@ -1,15 +1,15 @@
 <?php
 
-include 'db.php';
+include '../../config/db.php';
 
 $id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = $_POST['name'];
+    $name = $_POST['nome'];
     $cidade = $_POST['cidade'];
 
-    $sql = "UPDATE times SET name ='$name',cidade ='$cidade' WHERE id=$id";
+    $sql = "UPDATE times SET nome ='$nome',cidade ='$cidade' WHERE id=$id";
 
     if ($conn->query($sql) === true) {
         echo "Time atualizado com sucesso.";
@@ -40,8 +40,8 @@ $row = $result -> fetch_assoc();
 
     <form method="POST" action="update.php?id=<?php echo $row['id'];?>">
 
-        <label for="name">Nome:</label>
-        <input type="text" name="name" value="<?php echo $row['name'];?>" required>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="<?php echo $row['nome'];?>" required>
 
         <label for="cidade">Cidade:</label>
         <input type="text" name="cidade" value="<?php echo $row['cidade'];?>" required>

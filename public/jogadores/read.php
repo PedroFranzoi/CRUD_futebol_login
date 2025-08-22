@@ -25,12 +25,11 @@ if($result->num_rows > 0){
                 <td> {$row['posicao']} </td>
                 <td> {$row['numero_camisa']} </td>
                 <td> {$row['time_id']} </td>
-                <td> {$row['id_usuario']} </td>
                 <td>
-                    <a href='updateJogador.php?id={$row['id']}'>Utualizar</a>
+                    <a href='update.php?id={$row['id']}'>Utualizar</a>
                 </td>
                 <td>
-                    <a href='deleteJogador.php?id={$row['id']}'>Deletar</a>
+                    <a href='delete.php?id={$row['id']}'>Deletar</a>
                 </td>
             </tr>
         ";
@@ -38,7 +37,7 @@ if($result->num_rows > 0){
     echo "</table>";
     echo "<a href='create.php'>Criar Registro</a>";
 }else{
-    echo "Nenhum produto registrado.";
+    echo "Nenhum Jogador Registrado.";
     echo "<a href='create.php'>Criar Registro</a>";
 }
 
