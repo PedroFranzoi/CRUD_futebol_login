@@ -1,4 +1,4 @@
-# Crud Futeobol
+# Crud Futebol
 
 ## Logo
 
@@ -9,11 +9,11 @@
 É um site de gerenciamento de futebol que permite o cadastro e administração de times, jogadores e partidas.
 
 > [!IMPORTANT]
-> Serve para aiministrar os times de futebol
+> Serve para administrar os times de futebol
 
 ## Equipe
 
-- Guilherme P. [Lider]
+- Guilherme P. [Líder]
 - Gabriel K.
 - Pedro F.
 - Davi c.
