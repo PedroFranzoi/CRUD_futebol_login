@@ -12,7 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql = "UPDATE jogadores SET nome ='$name', posicao= '$posicao', numero_camisa ='$numero' WHERE id=$id";
 
-    if ($conn->query($sql) === true) {
+
+    if($numero > 99 || $numero <= 0){
+        echo "Coloque o numero da camisa do jogador de maneira correta(entre 1 e 99).";
+    }else{
+        if ($conn->query($sql) === true) {
         echo "Registro atualizado com sucesso.
         <a href='read.php'>Ver registros.</a>
         ";
@@ -21,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $conn->close();
     exit(); 
+    }
+    
 }
 
 $sql = "SELECT * FROM jogadores WHERE id=$id";
