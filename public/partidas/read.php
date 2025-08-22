@@ -2,7 +2,7 @@
 
 include '../../config/db.php';
 
-$sql = "SELECT timeFora.nome AS nomeCasa, timeCasa.nome AS nomeFora, data_jogo, gols_casa, gols_fora FROM partidas INNER JOIN times timeCasa ON partidas.time_casa_id = timeCasa.id INNER JOIN times timeFora ON partidas.time_fora_id = timeFora.id";
+$sql = "SELECT timeCasa.nome AS nomeCasa, timeFora.nome AS nomeFora, data_jogo, gols_casa, gols_fora FROM partidas INNER JOIN times timeCasa ON partidas.time_casa_id = timeCasa.id INNER JOIN times timeFora ON partidas.time_fora_id = timeFora.id";
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
