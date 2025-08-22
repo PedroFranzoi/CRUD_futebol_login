@@ -1,6 +1,14 @@
 <?php
 include '../../config/db.php';
 
+function buildQueryString($exclude = []) {
+    $params = $_GET;
+    foreach ($exclude as $param) {
+        unset($params[$param]);
+    }
+    return http_build_query($params);
+}
+
 $sqlTimes = "SELECT id, nome FROM times WHERE 1=1";
 $resultTimes = $conn->query($sqlTimes);
 
@@ -98,8 +106,13 @@ $result = $conn->query($sql);
 
 if($resultado->num_rows > 0){
     $paginaExibida = $pagina + 1;
-    echo "<a href='?pagina=$paginaAnterior'>Anterior</a>";
-echo "<a href='?pagina=$paginaPosterior'>Próxima</a>";
+    $queryBase = buildQueryString(['pagina']);
+
+$paginaAnteriorLink = "?$queryBase&pagina=$paginaAnterior";
+$paginaPosteriorLink = "?$queryBase&pagina=$paginaPosterior";
+
+echo "<a href='$paginaAnteriorLink'>Anterior</a> ";
+echo "<a href='$paginaPosteriorLink'>Próxima</a>";
 echo "<br> Página $paginaExibida de $total_paginas";
 echo "<br> Total de $num_linhas resultados";
 
