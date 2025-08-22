@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php';
+include '../../config/db.php';
 include 'partidas';
 
 $id = $_GET['id'];

@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php';
+include '../../config/db.php';
 
 $sql = "SELECT * FROM times";
 
@@ -27,7 +27,8 @@ if ($result->num_rows > 0) {
     }
     echo "</table>";
 } else {
-    echo "Nenhum registro de time encontrado.";
+    echo "Nenhum Registro de Time Encontrado.";
+    echo "<a href='create.php'>Criar Registro de Time</a>";
 }
 
 $conn -> close();
