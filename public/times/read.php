@@ -28,10 +28,10 @@ if ($result->num_rows > 0) {
                 <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
                  <td>
-                    <a href='../times/update.php' >Editar time<a>
+                    <a href='update.php' >Editar time<a>
                 </td>
                 <td>
-                    <a href='../times/delete.php' >Deletar time<a
+                    <a href='delete.php?id={$row['id']}' >Deletar time<a
                 </td>
                 </tr>"
                 ;

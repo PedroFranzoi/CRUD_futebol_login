@@ -5,6 +5,8 @@ include '../../config/db.php';
 
 $sql = "SELECT * FROM jogadores";
 
+$sql = "SELECT jogadores.id AS id_jogador, times.nome AS nomeTime, jogadores.nome AS nome_jogador, posicao, numero_camisa FROM jogadores INNER JOIN times ON jogadores.time_id = times.id";
+
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
@@ -21,15 +23,15 @@ if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
 
         echo "<tr>
-                <td> {$row['nome']} </td>
+                <td> {$row['nome_jogador']} </td>
                 <td> {$row['posicao']} </td>
                 <td> {$row['numero_camisa']} </td>
-                <td> {$row['time_id']} </td>
+                <td> {$row['nomeTime']} </td>
                 <td>
-                    <a href='update.php?id={$row['id']}'>Utualizar</a>
+                    <a href='update.php?id={$row['id_jogador']}'>Utualizar</a>
                 </td>
                 <td>
-                    <a href='delete.php?id={$row['id']}'>Deletar</a>
+                    <a href='delete.php?id={$row['id_jogador']}'>Deletar</a>
                 </td>
             </tr>
         ";
