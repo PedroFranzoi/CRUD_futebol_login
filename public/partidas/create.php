@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="timeCasa">Time de Casa:</label>
         <select name="timeCasa">
         <?php while ($row = $resultTimes->fetch_assoc()): ?>
-            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
+            <option value="<?= $row['id'] ?>"><?= $row['nome'] ?></option>
         <?php endwhile; ?>
         </select><br>
         <label for="timeFora">Time de Fora:</label>
         <select name="timeFora">
         <?php while ($row = $resultTimes2->fetch_assoc()): ?>
-            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
+            <option value="<?= $row['id'] ?>"><?= $row['nome'] ?></option>
         <?php endwhile; ?>
         </select><br>
         <label for="data">Data da Partida:</label>

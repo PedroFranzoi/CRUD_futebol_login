@@ -25,7 +25,6 @@ if($result->num_rows > 0){
                 <td> {$row['posicao']} </td>
                 <td> {$row['numero_camisa']} </td>
                 <td> {$row['time_id']} </td>
-                <td> {$row['id_usuario']} </td>
                 <td>
                     <a href='update.php?id={$row['id']}'>Utualizar</a>
                 </td>
