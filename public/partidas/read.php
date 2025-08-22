@@ -4,7 +4,7 @@ include '../../config/db.php';
 $sqlTimes = "SELECT id, nome FROM times WHERE 1=1";
 $resultTimes = $conn->query($sqlTimes);
 
-$sql = "SELECT timeCasa.nome AS nomeCasa, timeFora.nome AS nomeFora, data_jogo, gols_casa, gols_fora FROM partidas INNER JOIN times timeCasa ON partidas.time_casa_id = timeCasa.id INNER JOIN times timeFora ON partidas.time_fora_id = timeFora.id";
+$sql = "SELECT partidas.id AS id_partida, timeCasa.nome AS nomeCasa, timeFora.nome AS nomeFora, data_jogo, gols_casa, gols_fora FROM partidas INNER JOIN times timeCasa ON partidas.time_casa_id = timeCasa.id INNER JOIN times timeFora ON partidas.time_fora_id = timeFora.id";
 
 if (isset($_GET['id_time']) && $_GET['id_time'] != '') {
     $idTime = $_GET['id_time'];
@@ -28,7 +28,36 @@ if (isset($_GET['ganhou']) && $_GET['ganhou'] != '') {
     
 }
 
+$pagina = 0;
+$registroPorPagina = 2;
+$resultado = mysqli_query($conn, $sql);
+$num_linhas = mysqli_num_rows($resultado);
+$total_paginas = $num_linhas / $registroPorPagina;
+$total_paginas = ceil($total_paginas);
+
+if($resultado->num_rows > 0){
+if(isset($_GET['pagina'])){
+    $pagina = $_GET['pagina'];
+}
+if($pagina < 0){
+    $pagina = 0;
+}
+
+if($pagina >= $total_paginas){
+    $pagina = $total_paginas - 1;
+}
+
+$paginaAnterior = $pagina -1;
+$paginaPosterior = $pagina +1;
+
+$index = $pagina * $registroPorPagina;
+
+$sql .= " LIMIT $index, $registroPorPagina";
+
 $result = $conn->query($sql);
+}
+
+
 ?>
 
 <html lang="pt-BR">
@@ -57,18 +86,22 @@ $result = $conn->query($sql);
             <option value="casa" <?php if(isset($_GET['ganhou'])){if($_GET['ganhou'] == 'casa'){echo 'selected';}} ?>>Casa</option>
             <option value="fora" <?php if(isset($_GET['ganhou'])){if($_GET['ganhou'] == 'fora'){echo 'selected';}} ?>>Fora</option>
         </select><br>
-        <button type="submit">Filtrar</button>
+        <button type="submit">Atualizar</button>
     <a href="read.php">Remover Filtros</a>
 </form>
     
-</body>
-</html>
+
 
 <?php
 
 
 
-if($result->num_rows > 0){
+if($resultado->num_rows > 0){
+    $paginaExibida = $pagina + 1;
+    echo "<a href='?pagina=$paginaAnterior'>Anterior</a>";
+echo "<a href='?pagina=$paginaPosterior'>Próxima</a>";
+echo "<br> Página $paginaExibida de $total_paginas";
+echo "<br> Total de $num_linhas resultados";
 
     echo "<table border = '1'>
         <tr>
@@ -77,6 +110,7 @@ if($result->num_rows > 0){
             <th> Data da Partida </th>
             <th> Gols (Time de Casa) </th>
             <th> Gols (Time de Fora) </th>
+            <th> Ações </th>
         </tr>
     ";
 
@@ -88,6 +122,10 @@ if($result->num_rows > 0){
                 <td> {$row['data_jogo']} </td>
                 <td> {$row['gols_casa']} </td>
                 <td> {$row['gols_fora']} </td>
+                <td>
+                    <a href='update.php?id={$row['id_partida']}'>Atualizar</a>
+                    <a href='delete.php?id={$row['id_partida']}'>Deletar</a>
+                </td>
             </tr>
         ";
     }
@@ -100,3 +138,6 @@ echo "<a href='create.php'>Registrar partida</a>";
 $conn -> close();
 
 ?>
+</body>
+</html>
+
