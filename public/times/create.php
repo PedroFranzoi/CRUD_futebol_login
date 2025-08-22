@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $cidade = $_POST['cidade'];
 
-    $sql = " INSERT INTO times (nome, cidade) VALUE ('$nome', '$cidade')";
+    $sql = "INSERT INTO times(nome, cidade) VALUE ('$nome', '$cidade')";
 
     if ($conn->query($sql) === true) {
         echo "Novo time registrado criado com sucesso.";

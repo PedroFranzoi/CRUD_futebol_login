@@ -15,9 +15,9 @@ if ($result->num_rows > 0) {
             <th> ID </th>
             <th> Nome </th>
             <th> Cidade </th>
+            <th> Editar Times </th>
+            <th> Deletar Times </th>
             <a href='../times/create.php' >Criar times<a>
-            <a href='../times/update.php' >Editar times<a>
-            <a href='../times/delete.php' >Deletar times<a>
         </tr>
          ";
 
@@ -27,6 +27,12 @@ if ($result->num_rows > 0) {
                 <td> {$row['id']} </td>
                 <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
+                 <td>
+                    <a href='../times/update.php' >Editar time<a>
+                </td>
+                <td>
+                    <a href='../times/delete.php' >Deletar time<a
+                </td>
                 </tr>"
                 ;
     }
