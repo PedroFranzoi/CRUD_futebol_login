@@ -10,3 +10,19 @@
 
 > [!IMPORTANT]
 > Serve para aiministrar os times de futebol
+
+## Equipe
+
+- Guilherme P. [Lider]
+- Gabriel K.
+- Pedro F.
+- Davi c.
+
+## Principais Funções
+
+- Cadastrar time
+- Listar jogadores com paginação e filtros por nome, posição e time
+- Cadastrar jogador com nome, posição e time
+- Editar dados do jogador
+- Editar dados da partida
+- Editar dados de um time
