@@ -6,7 +6,7 @@ $id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = $_POST['nome'];
+    $nome = $_POST['nome'];
     $cidade = $_POST['cidade'];
 
     $sql = "UPDATE times SET nome ='$nome',cidade ='$cidade' WHERE id=$id";
