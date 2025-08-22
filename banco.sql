@@ -26,3 +26,25 @@ CREATE TABLE partidas (
     FOREIGN KEY (time_casa_id) REFERENCES times(id),
     FOREIGN KEY (time_fora_id) REFERENCES times(id)
 );
+
+INSERT INTO times (nome, cidade) VALUES
+    ('Atlético Mineiro', 'Belo Horizonte'), 
+    ('Atlético Paranaense', 'Curitiba '),
+    ('Bahia', 'Salvador'),
+    ('Botafogo', 'Rio de Janeiro'), 
+    ('Corinthians', 'São Paulo'),
+    ('Coritiba', 'Curitiba'),
+    ('Cruzeiro', 'Belo Horizonte'),
+    ('Cuiabá', 'Cuiabá'),
+    ('Flamengo', 'Rio de Janeiro'),
+    ('Fluminense', 'Rio de Janeiro'),
+    ('Fortaleza', 'Fortaleza'),
+    ('Goiás', 'Goiânia'),
+    ('Grêmio', 'Porto Alegre'),
+    ('Internacional', 'Porto Alegre'),
+    ('Palmeiras', 'São Paulo'),
+    ('Santos', 'Santos'),
+    ('São Paulo', 'São Paulo'),
+    ('Vasco da Gama', 'Rio de Janeiro'),
+    ('Atlético Goianiense', 'Goiânia'),
+    ('América Mineiro', 'Belo Horizonte');
