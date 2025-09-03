@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $numero = $_POST['numero_camisa'];
     $timeId = $_POST['time'];
 
-    $sql = "UPDATE jogadores SET nome ='$name', time='$timeId', posicao= '$posicao', numero_camisa ='$numero' WHERE id=$id";
+    $sql = "UPDATE jogadores SET nome ='$name', time_id='$timeId', posicao= '$posicao', numero_camisa ='$numero' WHERE id=$id";
 
 
     if($numero > 99 || $numero <= 0){
