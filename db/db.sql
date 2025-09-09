@@ -54,3 +54,6 @@ INSERT INTO times (nome, cidade) VALUES
     ('Vasco da Gama', 'Rio de Janeiro'),
     ('Atlético Goianiense', 'Goiânia'),
     ('América Mineiro', 'Belo Horizonte');
+
+    INSERT INTO usuarios (username, senha) VALUES
+        ('admin', '123456');
