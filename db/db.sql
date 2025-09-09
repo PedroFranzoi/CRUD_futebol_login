@@ -27,6 +27,12 @@ CREATE TABLE partidas (
     FOREIGN KEY (time_fora_id) REFERENCES times(id)
 );
 
+CREATE TABLE usuarios(
+	id  INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(120) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
 INSERT INTO times (nome, cidade) VALUES
     ('Atlético Mineiro', 'Belo Horizonte'), 
     ('Atlético Paranaense', 'Curitiba '),
