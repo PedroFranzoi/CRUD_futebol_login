@@ -147,6 +147,9 @@ echo "<br> Total de $num_linhas resultados";
 }
 echo "<a href='create.php'>Registrar jogador</a>";
 
+echo "<br>";
+
+echo "<a href='../index.php'>Siar</a>";
 $conn -> close();
 
 ?>

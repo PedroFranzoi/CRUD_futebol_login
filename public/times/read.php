@@ -102,6 +102,9 @@ echo "<br> Total de $num_linhas resultados";
 } else {
     echo "Nenhum Registro de Time Encontrado.";
     echo "<a href='create.php'>Criar Registro de Time</a>";
+    echo "<br>";
+
+    echo "<a href='../index.php'>Siar</a>";
 }
 
 $conn -> close();
